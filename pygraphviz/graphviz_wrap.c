@@ -2674,11 +2674,12 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_FILE swig_types[6]
 #define SWIGTYPE_p_GVC_t swig_types[7]
 #define SWIGTYPE_p_char swig_types[8]
-#define SWIGTYPE_p_lt_symlist_t swig_types[9]
-#define SWIGTYPE_p_p_char swig_types[10]
-#define SWIGTYPE_p_unsigned_int swig_types[11]
-static swig_type_info *swig_types[13];
-static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
+#define SWIGTYPE_p_gvplugin_library_t swig_types[9]
+#define SWIGTYPE_p_lt_symlist_t swig_types[10]
+#define SWIGTYPE_p_p_char swig_types[11]
+#define SWIGTYPE_p_unsigned_int swig_types[12]
+static swig_type_info *swig_types[14];
+static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2711,6 +2712,7 @@ static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 
 #include "graphviz/cgraph.h"
 #include "graphviz/gvc.h"
+#include "graphviz/gvplugin.h"
 
 
 SWIGINTERN swig_type_info*
@@ -3072,6 +3074,17 @@ SWIG_FromCharPtr(const char *cptr)
   
 
   #define SWIG_From_long   PyInt_FromLong 
+
+
+extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
+extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
+extern gvplugin_library_t gvplugin_core_LTX_library;
+lt_symlist_t lt_preloaded_symbols[4] = {
+    { "gvplugin_dot_layout_LTX_library", &gvplugin_dot_layout_LTX_library },
+    { "gvplugin_neato_layout_LTX_library", &gvplugin_neato_layout_LTX_library },
+    { "gvplugin_core_LTX_library", &gvplugin_core_LTX_library },
+    { 0, 0 }
+};
 
 
 SWIGINTERNINLINE PyObject*
@@ -4856,6 +4869,114 @@ SWIGINTERN PyObject *Swig_var_Agstrictundirected_get(void) {
 }
 
 
+SWIGINTERN int Swig_var_gvplugin_dot_layout_LTX_library_set(PyObject *_val) {
+  {
+    void *argp = 0;
+    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_gvplugin_library_t,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""gvplugin_dot_layout_LTX_library""' of type '""gvplugin_library_t""'");
+    }
+    if (!argp) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""gvplugin_dot_layout_LTX_library""' of type '""gvplugin_library_t""'");
+    } else {
+      gvplugin_dot_layout_LTX_library = *((gvplugin_library_t *)(argp));
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_gvplugin_dot_layout_LTX_library_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&gvplugin_dot_layout_LTX_library), SWIGTYPE_p_gvplugin_library_t,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_gvplugin_neato_layout_LTX_library_set(PyObject *_val) {
+  {
+    void *argp = 0;
+    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_gvplugin_library_t,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""gvplugin_neato_layout_LTX_library""' of type '""gvplugin_library_t""'");
+    }
+    if (!argp) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""gvplugin_neato_layout_LTX_library""' of type '""gvplugin_library_t""'");
+    } else {
+      gvplugin_neato_layout_LTX_library = *((gvplugin_library_t *)(argp));
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_gvplugin_neato_layout_LTX_library_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&gvplugin_neato_layout_LTX_library), SWIGTYPE_p_gvplugin_library_t,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_gvplugin_core_LTX_library_set(PyObject *_val) {
+  {
+    void *argp = 0;
+    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_gvplugin_library_t,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""gvplugin_core_LTX_library""' of type '""gvplugin_library_t""'");
+    }
+    if (!argp) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""gvplugin_core_LTX_library""' of type '""gvplugin_library_t""'");
+    } else {
+      gvplugin_core_LTX_library = *((gvplugin_library_t *)(argp));
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_gvplugin_core_LTX_library_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&gvplugin_core_LTX_library), SWIGTYPE_p_gvplugin_library_t,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_lt_preloaded_symbols_set(PyObject *_val) {
+  {
+    lt_symlist_t *inp = 0;
+    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_lt_symlist_t,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""lt_preloaded_symbols""' of type '""lt_symlist_t [4]""'");
+    } else if (inp) {
+      size_t ii = 0;
+      for (; ii < (size_t)4; ++ii) *(lt_symlist_t *)&lt_preloaded_symbols[ii] = *((lt_symlist_t *)inp + ii);
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""lt_preloaded_symbols""' of type '""lt_symlist_t [4]""'");
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_lt_preloaded_symbols_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(lt_preloaded_symbols), SWIGTYPE_p_lt_symlist_t,  0 );
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_gvContext(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   GVC_t *result = 0 ;
@@ -5273,6 +5394,7 @@ static swig_type_info _swigt__p_Agsym_t = {"_p_Agsym_t", "Agsym_t *", 0, 0, (voi
 static swig_type_info _swigt__p_FILE = {"_p_FILE", "FILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GVC_t = {"_p_GVC_t", "GVC_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_gvplugin_library_t = {"_p_gvplugin_library_t", "gvplugin_library_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_lt_symlist_t = {"_p_lt_symlist_t", "lt_symlist_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *", 0, 0, (void*)0, 0};
@@ -5287,6 +5409,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FILE,
   &_swigt__p_GVC_t,
   &_swigt__p_char,
+  &_swigt__p_gvplugin_library_t,
   &_swigt__p_lt_symlist_t,
   &_swigt__p_p_char,
   &_swigt__p_unsigned_int,
@@ -5301,6 +5424,7 @@ static swig_cast_info _swigc__p_Agsym_t[] = {  {&_swigt__p_Agsym_t, 0, 0, 0},{0,
 static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GVC_t[] = {  {&_swigt__p_GVC_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_gvplugin_library_t[] = {  {&_swigt__p_gvplugin_library_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_lt_symlist_t[] = {  {&_swigt__p_lt_symlist_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5315,6 +5439,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FILE,
   _swigc__p_GVC_t,
   _swigc__p_char,
+  _swigc__p_gvplugin_library_t,
   _swigc__p_lt_symlist_t,
   _swigc__p_p_char,
   _swigc__p_unsigned_int,
@@ -6068,6 +6193,10 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "Agstrictdirected", Swig_var_Agstrictdirected_get, Swig_var_Agstrictdirected_set);
   SWIG_addvarlink(globals, "Agundirected", Swig_var_Agundirected_get, Swig_var_Agundirected_set);
   SWIG_addvarlink(globals, "Agstrictundirected", Swig_var_Agstrictundirected_get, Swig_var_Agstrictundirected_set);
+  SWIG_addvarlink(globals, "gvplugin_dot_layout_LTX_library", Swig_var_gvplugin_dot_layout_LTX_library_get, Swig_var_gvplugin_dot_layout_LTX_library_set);
+  SWIG_addvarlink(globals, "gvplugin_neato_layout_LTX_library", Swig_var_gvplugin_neato_layout_LTX_library_get, Swig_var_gvplugin_neato_layout_LTX_library_set);
+  SWIG_addvarlink(globals, "gvplugin_core_LTX_library", Swig_var_gvplugin_core_LTX_library_get, Swig_var_gvplugin_core_LTX_library_set);
+  SWIG_addvarlink(globals, "lt_preloaded_symbols", Swig_var_lt_preloaded_symbols_get, Swig_var_lt_preloaded_symbols_set);
   SWIG_Python_SetConstant(d, "AGRAPH",SWIG_From_int((int)(0)));
   SWIG_Python_SetConstant(d, "AGNODE",SWIG_From_int((int)(1)));
   SWIG_Python_SetConstant(d, "AGOUTEDGE",SWIG_From_int((int)(2)));

@@ -3,6 +3,7 @@
 %{
 #include "graphviz/cgraph.h"
 #include "graphviz/gvc.h"
+#include "graphviz/gvplugin.h"
 %}
 
 %typemap(in) FILE* (int fd, PyObject *mode_obj, PyObject *mode_byte_obj, char *mode) {
@@ -271,6 +272,22 @@ const Agdesc_t Agdirected = { 1, 0, 0, 1 };
 const Agdesc_t Agstrictdirected = { 1, 1, 0, 1 };
 const Agdesc_t Agundirected = { 0, 0, 0, 1 };
 const Agdesc_t Agstrictundirected = { 0, 1, 0, 1 };
+
+/*
+Create a cvar with preloaded symbols for gvContextPlugins
+Largely copied from graphviz/cmd/dot/dot_builtins.cpp
+*/
+%inline %{
+extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
+extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
+extern gvplugin_library_t gvplugin_core_LTX_library;
+lt_symlist_t lt_preloaded_symbols[4] = {
+    { "gvplugin_dot_layout_LTX_library", &gvplugin_dot_layout_LTX_library },
+    { "gvplugin_neato_layout_LTX_library", &gvplugin_neato_layout_LTX_library },
+    { "gvplugin_core_LTX_library", &gvplugin_core_LTX_library },
+    { 0, 0 }
+};
+%}
 
 
 #define AGRAPH      0               /* can't exceed 2 bits. see Agtag_t. */
