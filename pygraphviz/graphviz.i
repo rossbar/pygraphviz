@@ -296,6 +296,8 @@ const Agdesc_t Agstrictundirected = { 0, 1, 0, 1 };
 
 /*  set up a graphviz context - and init graph - retaining old API */
 GVC_t *gvContext(void);
+/*  set up a graphviz context - and init graph - with builtins */
+GVC_t *gvContextPlugins(const lt_symlist_t *builtins, int demand_loading);
 int gvFreeContext(GVC_t *gvc);
 
 /* Compute a layout using a specified engine */

@@ -2674,10 +2674,11 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 #define SWIGTYPE_p_FILE swig_types[6]
 #define SWIGTYPE_p_GVC_t swig_types[7]
 #define SWIGTYPE_p_char swig_types[8]
-#define SWIGTYPE_p_p_char swig_types[9]
-#define SWIGTYPE_p_unsigned_int swig_types[10]
-static swig_type_info *swig_types[12];
-static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
+#define SWIGTYPE_p_lt_symlist_t swig_types[9]
+#define SWIGTYPE_p_p_char swig_types[10]
+#define SWIGTYPE_p_unsigned_int swig_types[11]
+static swig_type_info *swig_types[13];
+static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2730,7 +2731,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 {
 #if PY_VERSION_HEX>=0x03000000
   if (PyBytes_Check(obj))
-#else  
+#else
   if (PyString_Check(obj))
 #endif
   {
@@ -2743,7 +2744,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 #endif
     if (cptr) {
       if (alloc) {
-	/* 
+	/*
 	   In python the user should not be able to modify the inner
 	   string representation. To warranty that, if you define
 	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
@@ -2751,11 +2752,11 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 	   The default behavior is just to return the pointer value,
 	   so, be careful.
-	*/ 
+	*/
 #if defined(SWIG_PYTHON_SAFE_CSTRINGS)
-	if (*alloc != SWIG_OLDOBJ) 
+	if (*alloc != SWIG_OLDOBJ)
 #else
-	if (*alloc == SWIG_NEWOBJ) 
+	if (*alloc == SWIG_NEWOBJ)
 #endif
 	  {
 	    *cptr = (char *)memcpy(malloc((len + 1)*sizeof(char)), cstr, sizeof(char)*(len + 1));
@@ -3002,7 +3003,7 @@ SWIG_FromCharPtrAndSize(const char* carray, size_t size)
   if (carray) {
     if (size > INT_MAX) {
       swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-      return pchar_descriptor ? 
+      return pchar_descriptor ?
 	SWIG_InternalNewPointerObj((char *)(carray), pchar_descriptor, 0) : SWIG_Py_Void();
     } else {
 #if PY_VERSION_HEX >= 0x03000000
@@ -3024,7 +3025,7 @@ SWIG_FromCharPtr(const char *cptr)
 }
 
 
-  char *agattrname(Agsym_t *atsym) {	
+  char *agattrname(Agsym_t *atsym) {
     return atsym->name;
   }
   
@@ -4868,6 +4869,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_gvContextPlugins(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  lt_symlist_t *arg1 = (lt_symlist_t *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  GVC_t *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "gvContextPlugins", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_lt_symlist_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "gvContextPlugins" "', argument " "1"" of type '" "lt_symlist_t const *""'"); 
+  }
+  arg1 = (lt_symlist_t *)(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "gvContextPlugins" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = (int)(val2);
+  result = (GVC_t *)gvContextPlugins((lt_symlist_t const *)arg1,arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_GVC_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_gvFreeContext(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   GVC_t *arg1 = (GVC_t *) 0 ;
@@ -5215,6 +5246,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "agdelnode", _wrap_agdelnode, METH_VARARGS, NULL},
 	 { "agdeledge", _wrap_agdeledge, METH_VARARGS, NULL},
 	 { "gvContext", _wrap_gvContext, METH_NOARGS, NULL},
+	 { "gvContextPlugins", _wrap_gvContextPlugins, METH_VARARGS, NULL},
 	 { "gvFreeContext", _wrap_gvFreeContext, METH_O, NULL},
 	 { "gvLayout", _wrap_gvLayout, METH_VARARGS, NULL},
 	 { "gvFreeLayout", _wrap_gvFreeLayout, METH_VARARGS, NULL},
@@ -5241,6 +5273,7 @@ static swig_type_info _swigt__p_Agsym_t = {"_p_Agsym_t", "Agsym_t *", 0, 0, (voi
 static swig_type_info _swigt__p_FILE = {"_p_FILE", "FILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GVC_t = {"_p_GVC_t", "GVC_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_lt_symlist_t = {"_p_lt_symlist_t", "lt_symlist_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *", 0, 0, (void*)0, 0};
 
@@ -5254,6 +5287,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FILE,
   &_swigt__p_GVC_t,
   &_swigt__p_char,
+  &_swigt__p_lt_symlist_t,
   &_swigt__p_p_char,
   &_swigt__p_unsigned_int,
 };
@@ -5267,6 +5301,7 @@ static swig_cast_info _swigc__p_Agsym_t[] = {  {&_swigt__p_Agsym_t, 0, 0, 0},{0,
 static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GVC_t[] = {  {&_swigt__p_GVC_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_lt_symlist_t[] = {  {&_swigt__p_lt_symlist_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -5280,6 +5315,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FILE,
   _swigc__p_GVC_t,
   _swigc__p_char,
+  _swigc__p_lt_symlist_t,
   _swigc__p_p_char,
   _swigc__p_unsigned_int,
 };

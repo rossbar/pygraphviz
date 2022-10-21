@@ -74,7 +74,7 @@ def agraphnew(name,strict=False,directed=False):
     else:
         if directed:
             return _graphviz.agopen(name,cvar.Agdirected,None)
-        else:		 
+        else:
             return _graphviz.agopen(name,cvar.Agundirected,None)
 
 
@@ -232,7 +232,7 @@ def agnameof(handle):
   if name==b'' or name.startswith(b'%'):
     return None
   else:
-    return name 
+    return name
 
 AGRAPH = _graphviz.AGRAPH
 AGNODE = _graphviz.AGNODE
@@ -242,6 +242,9 @@ AGEDGE = _graphviz.AGEDGE
 
 def gvContext():
     return _graphviz.gvContext()
+
+def gvContextPlugins(builtins, demand_loading):
+    return _graphviz.gvContextPlugins(builtins, demand_loading)
 
 def gvFreeContext(gvc):
     return _graphviz.gvFreeContext(gvc)
