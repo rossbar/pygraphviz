@@ -1485,7 +1485,7 @@ class AGraph:
         if isinstance(prog, str):
             prog = prog.encode(self.encoding)
 
-        gvc = gv.gvContext()
+        gvc = gv.gvContextPlugins()
         retval = gv.gvLayout(gvc, self.handle, prog)
         # gvLayout returns -1 if `prog` is not a valid program.
         # TODO: Check other possible return values from gvLayout
