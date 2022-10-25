@@ -1598,7 +1598,8 @@ class AGraph:
             prog = prog.encode(self.encoding)
 
         # Start the drawing
-        gvc = gv.gvContext()
+        # Create context with graphviz builtin layouts
+        gvc = gv.gvContextPlugins(gv.cvar.lt_preloaded_symbols, 1)
         G = self.handle
 
         # Layout
