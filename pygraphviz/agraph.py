@@ -1485,6 +1485,12 @@ class AGraph:
         if isinstance(prog, str):
             prog = prog.encode(self.encoding)
 
+        # NOTE: lt_preloaded_symbols is a C variable containing the
+        # plugin table which includes the gvplugin_dot_layout_LTX_library,
+        # gvplugin_neato_layout_LTX_library, and gvplugin_core_LTX_library
+        # builtins, encompassing all of the layouts that are available via
+        # libcgraph. There's probably a better way to wrap this that doesn't
+        # require exposing lt_preloaded_symbols on the Python side.
         gvc = gv.gvContextPlugins(gv.cvar.lt_preloaded_symbols, 1)
         retval = gv.gvLayout(gvc, self.handle, prog)
         # gvLayout returns -1 if `prog` is not a valid program.
