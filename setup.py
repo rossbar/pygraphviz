@@ -95,6 +95,7 @@ if __name__ == "__main__":
                 "gvplugin_dot_layout",
                 "gvplugin_neato_layout",
                 "gvplugin_visio",
+                "gvplugin_gd",
             ],
             runtime_library_dirs=["/usr/lib/graphviz"],
             define_macros=define_macros,
