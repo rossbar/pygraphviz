@@ -3080,7 +3080,7 @@ extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
 extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
 extern gvplugin_library_t gvplugin_core_LTX_library;
 extern gvplugin_library_t gvplugin_gd_LTX_library;
-lt_symlist_t lt_preloaded_symbols[4] = {
+lt_symlist_t lt_preloaded_symbols[5] = {
     { "gvplugin_dot_layout_LTX_library", &gvplugin_dot_layout_LTX_library },
     { "gvplugin_neato_layout_LTX_library", &gvplugin_neato_layout_LTX_library },
     { "gvplugin_core_LTX_library", &gvplugin_core_LTX_library },
@@ -4984,12 +4984,12 @@ SWIGINTERN int Swig_var_lt_preloaded_symbols_set(PyObject *_val) {
     lt_symlist_t *inp = 0;
     int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_lt_symlist_t,  0 );
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""lt_preloaded_symbols""' of type '""lt_symlist_t [4]""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""lt_preloaded_symbols""' of type '""lt_symlist_t [5]""'");
     } else if (inp) {
       size_t ii = 0;
-      for (; ii < (size_t)4; ++ii) *(lt_symlist_t *)&lt_preloaded_symbols[ii] = *((lt_symlist_t *)inp + ii);
+      for (; ii < (size_t)5; ++ii) *(lt_symlist_t *)&lt_preloaded_symbols[ii] = *((lt_symlist_t *)inp + ii);
     } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""lt_preloaded_symbols""' of type '""lt_symlist_t [4]""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""lt_preloaded_symbols""' of type '""lt_symlist_t [5]""'");
     }
   }
   return 0;
