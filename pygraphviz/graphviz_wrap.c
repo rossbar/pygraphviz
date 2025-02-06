@@ -3080,13 +3080,11 @@ extern gvplugin_library_t gvplugin_dot_layout_LTX_library;
 extern gvplugin_library_t gvplugin_neato_layout_LTX_library;
 extern gvplugin_library_t gvplugin_core_LTX_library;
 extern gvplugin_library_t gvplugin_gd_LTX_library;
-extern gvplugin_library_t gvplugin_pango_LTX_library;
 lt_symlist_t lt_preloaded_symbols[6] = {
     { "gvplugin_dot_layout_LTX_library", &gvplugin_dot_layout_LTX_library },
     { "gvplugin_neato_layout_LTX_library", &gvplugin_neato_layout_LTX_library },
     { "gvplugin_core_LTX_library", &gvplugin_core_LTX_library },
     { "gvplugin_gd_LTX_library", &gvplugin_gd_LTX_library },
-    { "gvplugin_pango_LTX_library", &gvplugin_pango_LTX_library },
     { 0, 0 }
 };
 
@@ -4981,33 +4979,6 @@ SWIGINTERN PyObject *Swig_var_gvplugin_gd_LTX_library_get(void) {
 }
 
 
-SWIGINTERN int Swig_var_gvplugin_pango_LTX_library_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_gvplugin_library_t,  0 );
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""gvplugin_pango_LTX_library""' of type '""gvplugin_library_t""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""gvplugin_pango_LTX_library""' of type '""gvplugin_library_t""'");
-    } else {
-      gvplugin_pango_LTX_library = *((gvplugin_library_t *)(argp));
-    }
-  }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_gvplugin_pango_LTX_library_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&gvplugin_pango_LTX_library), SWIGTYPE_p_gvplugin_library_t,  0 );
-  return pyobj;
-}
-
-
 SWIGINTERN int Swig_var_lt_preloaded_symbols_set(PyObject *_val) {
   {
     lt_symlist_t *inp = 0;
@@ -6255,7 +6226,6 @@ SWIG_init(void) {
   SWIG_addvarlink(globals, "gvplugin_neato_layout_LTX_library", Swig_var_gvplugin_neato_layout_LTX_library_get, Swig_var_gvplugin_neato_layout_LTX_library_set);
   SWIG_addvarlink(globals, "gvplugin_core_LTX_library", Swig_var_gvplugin_core_LTX_library_get, Swig_var_gvplugin_core_LTX_library_set);
   SWIG_addvarlink(globals, "gvplugin_gd_LTX_library", Swig_var_gvplugin_gd_LTX_library_get, Swig_var_gvplugin_gd_LTX_library_set);
-  SWIG_addvarlink(globals, "gvplugin_pango_LTX_library", Swig_var_gvplugin_pango_LTX_library_get, Swig_var_gvplugin_pango_LTX_library_set);
   SWIG_addvarlink(globals, "lt_preloaded_symbols", Swig_var_lt_preloaded_symbols_get, Swig_var_lt_preloaded_symbols_set);
   SWIG_Python_SetConstant(d, "AGRAPH",SWIG_From_int((int)(0)));
   SWIG_Python_SetConstant(d, "AGNODE",SWIG_From_int((int)(1)));
