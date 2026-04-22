@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  GRAPHVIZ_VERSION: "12.2.1"
+  GRAPHVIZ_VERSION: "14.1.5"
 
 jobs:
   build_wheels:
@@ -38,73 +38,11 @@ jobs:
 
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
 
-          # --- Build graphviz from source (autotools) on Linux/macOS ---
-          # The release tarballs use autotools, not CMake.
-          # --disable-ltdl: disables dynamic plugin loading via config6
-          # --disable-swig --disable-tcl etc: skip language bindings we don't need
-          # CFLAGS=-fPIC: needed for linking into a shared Python extension
           CIBW_BEFORE_ALL_LINUX: >
-            dnf install -y gcc gcc-c++ bison flex expat-devel zlib-devel autoconf automake libtool gd-devel &&
-            curl -L
-            "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/${{ env.GRAPHVIZ_VERSION }}/graphviz-${{ env.GRAPHVIZ_VERSION }}.tar.gz"
-            -o /tmp/graphviz.tar.gz &&
-            tar xzf /tmp/graphviz.tar.gz -C /tmp &&
-            cd /tmp/graphviz-${{ env.GRAPHVIZ_VERSION }} &&
-            ./configure
-            --prefix=/opt/graphviz
-            --disable-ltdl
-            --enable-static
-            --disable-swig
-            --disable-tcl
-            --disable-sharp
-            --disable-go
-            --disable-guile
-            --disable-java
-            --disable-lua
-            --disable-perl
-            --disable-php
-            --disable-python
-            --disable-python3
-            --disable-r
-            --disable-ruby
-            --disable-man-pdfs
-            --with-expat
-            --with-zlib
-            CFLAGS="-fPIC" &&
-            make -j$(nproc) &&
-            make install &&
-            ldconfig
+            dnf install graphviz graphviz-devel
 
           CIBW_BEFORE_ALL_MACOS: >
-            brew install gd &&
-            curl -L
-            "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/${{ env.GRAPHVIZ_VERSION }}/graphviz-${{ env.GRAPHVIZ_VERSION }}.tar.gz"
-            -o /tmp/graphviz.tar.gz &&
-            tar xzf /tmp/graphviz.tar.gz -C /tmp &&
-            cd /tmp/graphviz-${{ env.GRAPHVIZ_VERSION }} &&
-            ./configure
-            --prefix=/opt/graphviz
-            --disable-ltdl
-            --enable-static
-            --disable-swig
-            --disable-tcl
-            --disable-sharp
-            --disable-go
-            --disable-guile
-            --disable-java
-            --disable-lua
-            --disable-perl
-            --disable-php
-            --disable-python
-            --disable-python3
-            --disable-r
-            --disable-ruby
-            --disable-man-pdfs
-            --with-expat
-            --with-zlib &&
-            echo 'libgvplugin_gd_la_LIBADD += ../../lib/pathplan/libpathplan_C.la' >> plugin/gd/Makefile &&
-            make -j$(sysctl -n hw.logicalcpu) &&
-            sudo make install
+            brew install graphviz
 
           # Windows: use the official graphviz installer to a simple path (no spaces).
           # Update the package_files URL when changing GRAPHVIZ_VERSION.
@@ -116,7 +54,7 @@ jobs:
           # --- Environment for pip build step ---
           CIBW_ENVIRONMENT_LINUX: >
             GRAPHVIZ_PREFIX=/opt/graphviz
-            LD_LIBRARY_PATH=/opt/graphviz/lib:/opt/graphviz/lib/graphviz
+            LD_LIBRARY_PATH=/usr/lib64/:/usr/lib64/graphviz
           CIBW_ENVIRONMENT_MACOS: >
             GRAPHVIZ_PREFIX=/opt/graphviz
             DYLD_LIBRARY_PATH=/opt/graphviz/lib:/opt/graphviz/lib/graphviz
@@ -128,25 +66,25 @@ jobs:
           # --- Bundle CLI tools into the wheel ---
           CIBW_BEFORE_BUILD_LINUX: >
             mkdir -p {package}/pygraphviz/bin &&
-            cp /opt/graphviz/bin/gc
-            /opt/graphviz/bin/acyclic
-            /opt/graphviz/bin/gvpr
-            /opt/graphviz/bin/gvcolor
-            /opt/graphviz/bin/ccomps
-            /opt/graphviz/bin/sccmap
-            /opt/graphviz/bin/tred
-            /opt/graphviz/bin/unflatten
+            cp /usr/bin/gc
+            /usr/bin/acyclic
+            /usr/bin/gvpr
+            /usr/bin/gvcolor
+            /usr/bin/ccomps
+            /usr/bin/sccmap
+            /usr/bin/tred
+            /usr/bin/unflatten
             {package}/pygraphviz/bin/
           CIBW_BEFORE_BUILD_MACOS: >
             mkdir -p {package}/pygraphviz/bin &&
-            cp /opt/graphviz/bin/gc
-            /opt/graphviz/bin/acyclic
-            /opt/graphviz/bin/gvpr
-            /opt/graphviz/bin/gvcolor
-            /opt/graphviz/bin/ccomps
-            /opt/graphviz/bin/sccmap
-            /opt/graphviz/bin/tred
-            /opt/graphviz/bin/unflatten
+            cp /usr/bin/gc
+            /usr/bin/acyclic
+            /usr/bin/gvpr
+            /usr/bin/gvcolor
+            /usr/bin/ccomps
+            /usr/bin/sccmap
+            /usr/bin/tred
+            /usr/bin/unflatten
             {package}/pygraphviz/bin/
           CIBW_BEFORE_BUILD_WINDOWS: >
             mkdir {package}\pygraphviz\bin &
